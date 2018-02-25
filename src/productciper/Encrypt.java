@@ -13,11 +13,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-
 /**
  *
  * @author Gangani
  */
+
 public class Encrypt {
     public void Encrypt()throws IOException
     {
@@ -47,6 +47,10 @@ public class Encrypt {
                 output = output + wrd;
             }
 	}
+        
+        Random num3 = new Random();
+        int  r3 = num3.nextInt(25) + 1;
+        output = keyGenerator(ranNum,n,r3);
         System.out.println(output);
     }
     
@@ -90,7 +94,14 @@ public class Encrypt {
         return words;
     }
     
-    private void keyGenerator(int x,int y){
-        
+    private String keyGenerator(int x,int y,int r){
+        int t1=0;
+        t1 = (x + r)%26;
+        String key="";
+        String X = Integer.toString(x);
+        String Y = Integer.toString(y);
+        key=key+(char)((x + r)%26)+X+(char)((y + r)%26)+Y;
+        y=y+(char)y;
+        return key;
     }
 }
